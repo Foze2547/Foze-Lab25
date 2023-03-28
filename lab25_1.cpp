@@ -64,3 +64,32 @@ void List::append(int d){
 }
 
 //Write List::remove() here
+void List::remove(int d) {
+    Node *current = root;
+    Node *prev = NULL;
+    
+	for (int i = 0; i < d; i++)
+	{
+		prev = current;
+        current = current->next;
+	}
+	
+    if(current == NULL) {
+        // The value is not found in the list
+        return;
+    }
+    
+    if(prev == NULL) {
+        // The node to be removed is the root node
+        root = current->next;
+    } else {
+        // The node to be removed is not the root node
+        prev->next = current->next;
+    }
+    
+    delete current;
+    size--;
+}
+
+
+
